@@ -1,0 +1,49 @@
+<%= form_with(model: answear, local: true) do |form| %>
+  <% if answear.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(answear.errors.count, "error") %> prohibited this answear from being saved:</h2>
+
+      <ul>
+      <% answear.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_field :description, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :question_id %>
+    <%= form.text_field :question_id, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :lat %>
+    <%= form.text_field :lat, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :lng %>
+    <%= form.text_field :lng, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <% if answear.persisted? %>
+      <div class="float-right">
+        <%= link_to 'Destroy', answear, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
+
+    <%= form.submit class: 'btn btn-primary' %>
+
+    <% if answear.persisted? %>
+      <%= link_to "Cancel", answear, class: "btn btn-link" %>
+    <% else %>
+      <%= link_to "Cancel", answears_path, class: "btn btn-link" %>
+    <% end %>
+  </div>
+<% end %>

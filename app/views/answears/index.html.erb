@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-sm-6">
+    <h1>Answears</h1>
+  </div>
+
+  <div class="col-sm-6 text-right">
+  <%#= link_to new_answear_path, class: 'btn btn-primary' do %>
+    <!-- Add New Answear -->
+  <%# end %>
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Question</th>
+        <th>Your Answears</th>
+        <th>Lat</th>
+        <th>Lng</th>
+        <th>View</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @answears.present? %>
+        <% @answears.each do |answear| %>
+          <%= content_tag :tr, id: dom_id(answear), class: dom_class(answear) do %>
+            
+
+                        <td><%= answear.question.title %></td>
+                        <td><%= answear.description %></td>
+                        <td><%= answear.lat %></td>
+                        <td><%= answear.lng %></td>
+            
+            
+              <td><%= link_to 'Show', answear %></td>
+            
+          <% end %>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

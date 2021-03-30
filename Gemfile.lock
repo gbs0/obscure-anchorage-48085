@@ -91,6 +91,8 @@ GEM
       xpath (~> 3.2)
     childprocess (3.0.0)
     chronic (0.10.2)
+    coderay (1.1.3)
+    colorize (0.8.1)
     concurrent-ruby (1.1.8)
     connection_pool (2.2.3)
     crass (1.0.6)
@@ -108,6 +110,8 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     erubi (1.10.0)
     execjs (2.7.0)
+    faker (2.17.0)
+      i18n (>= 1.6, < 2)
     faraday (1.3.0)
       faraday-net_http (~> 1.0)
       multipart-post (>= 1.2, < 3)
@@ -200,6 +204,9 @@ GEM
     pagy (3.12.0)
     pg (1.2.3)
     popper_js (1.16.0)
+    pry (0.13.1)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
     public_suffix (4.0.6)
     puma (5.2.2)
       nio4r (~> 2.0)
@@ -323,9 +330,11 @@ DEPENDENCIES
   bootstrap (~> 4.5)
   byebug
   capybara (>= 3.26)
+  colorize
   devise (~> 4.7, >= 4.7.1)
   devise-bootstrapped!
   devise_masquerade (~> 1.2)
+  faker
   font-awesome-sass (~> 5.13)
   friendly_id (~> 5.3)
   image_processing
@@ -339,6 +348,7 @@ DEPENDENCIES
   omniauth-github (~> 1.4)
   omniauth-twitter (~> 1.4)
   pg (~> 1.1)
+  pry
   puma (~> 5.0)
   pundit (~> 2.1)
   rack-mini-profiler (~> 2.0)

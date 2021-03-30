@@ -1,0 +1,59 @@
+<div class="page-header">
+  <div class="d-flex flex-row justify-content-between aling-center mb-3">
+    <h3 style="margin: 0;"><%= @quiz.title %></h3>
+    <div>
+      <%= link_to quizzes_path, class: 'btn btn-warning col-sm-6 col-lg-6  mb-2' do %>
+        Back to all Quizzes
+      <% end %>
+      <%= link_to edit_quiz_path(@quiz), class: 'btn btn-primary col-sm-6 col-lg-2 mb-2' do %>
+        Edit
+      <% end %>
+      <%= link_to new_quiz_question_path(@quiz), class: 'btn btn-success col-sm-6 col-lg-8' do %>
+        New Question
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<dl class="dl-horizontal col-sm-12 col-md-4 mb-3">
+  <ul class="list-group">
+    <li class="list-group-item"><strong>Title:</strong> <%= @quiz.title %></li>
+    <li class="list-group-item"><strong>Topic:</strong> <%= @quiz.topic %></li>
+    <li class="list-group-item"><strong>Created:</strong> <%= Timezone.date_threshold(@quiz.created_at) %> ago</li>
+  </ul>
+</dl>
+
+<div class="col-md-8 col-lg-12">
+  <% if @questions.present? %>
+    <div class="mb-3">
+      <h3>Questions</h3>
+    </div>
+    <div class="d-flex flex-column">
+      <% @questions.each do |question| %>
+        <div class="card mb-3" style="">
+          <div class="card-body">
+            <p class="card-text"><%= question.title %></p>
+            <%= link_to edit_question_path(question), class: 'card-link' do %>
+              <div class="d-flex align-items-center">
+                <i class="fas fa-pen"></i><small class="ml-2">Edit Question</small>
+              </div>
+            <% end %>
+            <%= link_to question_path(question), method: :delete, data: {confirm:"Destroy this question?"}, class: "ml-3 card-link" do %>
+              <div class="d-flex align-items-center">
+                <i class="fas fa-trash"></i><small class="ml-2">Delete</small>
+              </div>
+            <% end %>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Created <%= Timezone.date_threshold(question.created_at) %> ago | </small>
+            <small class="text-muted">Last Update: <%= Timezone.date_threshold(question.updated_at) %> ago</small>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="container text-center">
+      <h4>No questions created yet ):</h4>
+    </div>
+  <% end %>
+</div>

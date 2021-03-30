@@ -1,0 +1,31 @@
+<div class="page-header">
+  <div class="d-flex flex-row justify-content-between aling-center">
+    <h3 style="margin: 0;">Show answear</h3>
+    <div>
+      <%= link_to answears_path, class: 'btn btn-warning col-sm-6 col-lg-10 mb-2' do %>
+        Back to all Answears
+      <% end %>
+      <%= link_to edit_answear_path(@answear), class: 'btn btn-primary col-sm-6 col-lg-4  mb-2' do %>
+        Edit
+      <% end %> 
+    </div>
+  </div>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Question:</dt>
+  <dd><%= @answear.question.title %></dd>
+
+  <dt>Description:</dt>
+  <dd><%= @answear.description %></dd>
+
+  <dt>Lat:</dt>
+  <dd><%= @answear.lat %></dd>
+
+  <dt>Lng:</dt>
+  <dd><%= @answear.lng %></dd>
+
+  <dt>Answeared at:</dt>
+  <dd><%= @answear.created_at %></dd>
+
+</dl>
