@@ -23,13 +23,13 @@
 
         <li class="nav-item"><%= link_to "Create a Quiz", new_quiz_path, class: "nav-link mr-4" %></li>
 
-        <li class="nav-item"><%= link_to "See your Quizzes", quizzes_path, class: "nav-link mr-4" %></li>
+        <li class="nav-item"><%= link_to "My Quizzes", quizzes_path, class: "nav-link mr-4" %></li>
         
         <li class="nav-item"><%= link_to "See all Answears", answears_path, class: "nav-link mr-4" %></li>
 
         <li class="nav-item">
-          <%= link_to notifications_path, class: "nav-link" do %>
-            <span><i class="far fa-bell" aria-hidden="true"></i></span>
+          <%= link_to root_path, class: "nav-link " do %>
+            <span><i class="fas fa-home" aria-hidden="true"></i></span>
           <% end %>
          </li>
 
@@ -41,6 +41,7 @@
               <% if current_user.admin? && respond_to?(:madmin_root_path) %>
                 <%= link_to "Admin Area", madmin_root_path, class: "dropdown-item" %>
               <% end %>
+              <%= link_to "My Answears", answears_path, class: "dropdown-item" %>
               <%= link_to "Settings", edit_user_registration_path, class: "dropdown-item" %>
               <div class="dropdown-divider"></div>
               <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>

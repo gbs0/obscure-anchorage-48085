@@ -1,8 +1,10 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  resources :answears
-  resources :questions
+  resources :answears, except: [ :new ]
+  resources :questions do
+    resources :answears, only: [ :new, :create ]
+  end
   resources :quizzes do
     resources :questions, only: [ :new, :create, :destroy ]
   end

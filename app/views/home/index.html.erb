@@ -15,12 +15,16 @@
                         <p><%= question.title %></p>
                     </blockquote>
                     <div>
-                        <%if user_masquerade? %>
-                            <% unless current_user.id.equal?(question.user_id)  %>
-                                <a href="#" class="btn btn-md btn-success">Answear It!</a>
+                        <%if current_user %>
+                            <% unless current_user.id.equal?(question.user_id) %>
+                                <%= link_to new_question_answear_path(question.id), class: "btn btn-md btn-success mr-3" do %>
+                                    Answear It!
+                                <% end %>
                             <% end %>
                         <% end %>
-                        <a href="#" class="btn btn-md btn-warning">See Answears</a>
+                        <%= link_to question_path(question.id), class: "btn btn-md btn-warning" do %>
+                            See Answears
+                        <% end %>
                     </div>
                     <div class="p-3 text-right">
                         <footer class="blockquote-footer text-white flex-end">Asked by: <cite title="Source Title"><%=  UsersHelper::user_name(question.user_id) %></cite></footer>

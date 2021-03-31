@@ -1,0 +1,46 @@
+<%= form_with(url: question_answears_path(params[:question_id]), method: :post) do |form| %>
+  <% if answear.errors.any? %>
+    <div id="error_explanation">
+      <h4><%= pluralize(answear.errors.count, "error") %> prohibited this answear from being saved:</h4>
+
+      <ul>
+      <% answear.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="bd-callout bd-callout-warning">
+    <span>Question:</span>
+    <br/>
+    <%= QuestionsHelper::title(params[:question_id]) %>
+    <div class="text-right">
+        <small>Posted <%= QuestionsHelper::timestamp(params[:question_id]) %> ago</small>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Answear to: <%= QuestionsHelper::author(params[:question_id]) %></span>
+        </div>
+        <%= form.text_area :description, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <% if answear.persisted? %>
+      <div class="float-right">
+        <%= link_to 'Destroy', answear, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
+
+    <%= form.submit "Send", class: 'btn btn-primary' %>
+
+    <% if answear.persisted? %>
+      <%= link_to "Cancel", answear, class: "btn btn-link" %>
+    <% else %>
+      <%= link_to "Cancel", root_path, class: "btn btn-link" %>
+    <% end %>
+  </div>
+<% end %>
