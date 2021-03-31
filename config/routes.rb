@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   end
   get '/privacy', to: 'home#privacy'
   get '/terms', to: 'home#terms'
-  
+  get 'questions_answeared', to: "answears#answeared_index"
+
   authenticate :user, lambda { |u| u.admin? } do
     mount Sidekiq::Web => '/sidekiq'
 

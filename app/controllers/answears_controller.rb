@@ -7,6 +7,15 @@ class AnswearsController < ApplicationController
     @answears = Answear.by_user(current_user.id)
   end
 
+  def answeared_index # Get all answered questions
+    _questions = Question.by_user(current_user.id)
+    unless _questions.empty?
+      _questions.each do |question|
+        @answears = Answear.by_question_id(question.id)
+      end
+    end
+  end
+
   # GET /answears/1 or /answears/1.json
   def show
   end
@@ -23,6 +32,7 @@ class AnswearsController < ApplicationController
   # POST /answears or /answears.json
   def create
     @answear = Answear.new
+    @answear.user_id = current_user.id
     @answear.description = answear_params[:description]
     @answear.lat = breadcrumb_params[:lat]
     @answear.lng = breadcrumb_params[:lng]
