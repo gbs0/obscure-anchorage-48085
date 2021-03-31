@@ -2,20 +2,27 @@
   <div class="d-flex flex-row justify-content-between aling-center mb-3">
     <h3 class="mt-4">Show Question</h3>
     <div>
-      <%= link_to root_path, class: 'btn btn-warning col-sm-6 col-lg-6  mb-2' do %>
+      <%= link_to root_path, class: 'btn btn-warning col-sm-6 col-lg-6 mb-2' do %>
         Back to all Questions
       <% end %>
-      <%= link_to edit_question_path(@question), class: 'btn btn-primary col-sm-6 col-lg-2 mb-2' do %>
-        Edit
+      <% if  current_user.id.equal?(@question.user_id) %>
+        <%= link_to edit_question_path(@question), class: 'btn btn-primary col-sm-6 col-lg-2 mb-2' do %>
+          Edit
+        <% end %>
       <% end %>
-      <%= link_to new_question_answear_path(@question), class: 'btn btn-success col-sm-6 col-lg-8' do %>
-        Answear this question
+      <% unless current_user.id.equal?(@question.user_id) %>
+        <%= link_to new_question_answear_path(@question), class: 'btn btn-success col-sm-6 col-lg-8' do %>
+          Answear this question
+        <% end %>
+      <% end %>
+      <%= link_to new_question_path(@question), class: 'btn btn-success col-sm-6 col-lg-8' do %>
+        Create new Question
       <% end %>
     </div>
   </div>
 </div>
 
-<dl class="dl-horizontal">
+<dl class="dl-horizontal mt-3 bordered">
   <dt>Title:</dt>
   <dd><%= @question.title %></dd>
 
