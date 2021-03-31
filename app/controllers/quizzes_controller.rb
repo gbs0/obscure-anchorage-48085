@@ -1,10 +1,10 @@
 class QuizzesController < ApplicationController
   before_action :set_quiz, only: %i[ show edit update destroy ]
-  before_action :set_user, only: %i[create]
+  before_action :set_user, only: %i[ index new create]
   before_action :authenticate_user!, only: %i[new index show]
   # GET /quizzes or /quizzes.json
   def index
-    @quizzes = Quiz.all
+    @quizzes = Quiz.by_user(@user.id)
   end
 
   # GET /quizzes/1 or /quizzes/1.json
