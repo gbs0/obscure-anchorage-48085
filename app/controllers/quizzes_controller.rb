@@ -1,6 +1,5 @@
 class QuizzesController < ApplicationController
   before_action :set_quiz, only: %i[ show edit update destroy ]
-  before_action :set_questions, only: %i[ show ]
   before_action :set_user, only: %i[create]
 
   # GET /quizzes or /quizzes.json
@@ -10,6 +9,7 @@ class QuizzesController < ApplicationController
 
   # GET /quizzes/1 or /quizzes/1.json
   def show
+    @questions = Question.by_quiz(@quiz.id)
   end
 
   # GET /quizzes/new
@@ -75,6 +75,6 @@ class QuizzesController < ApplicationController
     end
 
     def set_questions
-      @questions = Question.by_quiz(@quiz.id)
+      
     end
 end
