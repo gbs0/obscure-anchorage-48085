@@ -1,10 +1,8 @@
-require 'colorize'
-
 namespace :db_status do
     desc "See Users db Status"
     task count_users: :environment do  
       if User.all.limit(5).empty?
-        puts "0 Users on Database".yellow 
+        puts "0 Users on Database" 
       else
         puts User.all.limit(20000).count.to_s + " Users on Database" 
       end
@@ -13,7 +11,7 @@ namespace :db_status do
     desc "See Quizzes db Status"
     task count_quizzes: :environment do  
       if Quiz.all.limit(5).empty?
-        puts "0 Quizzes on Database".yellow 
+        puts "0 Quizzes on Database" 
       else
         puts Quiz.all.limit(20000).count.to_s + " Quizzes on Database" 
       end
@@ -22,7 +20,7 @@ namespace :db_status do
     desc "See Questions db Status"
     task count_questions: :environment do  
       if Question.all.limit(5).empty?
-        puts "0 Questions on Database".yellow 
+        puts "0 Questions on Database" 
       else
         puts Question.all.limit(20000).count.to_s + " Questions on Database" 
       end
@@ -31,7 +29,7 @@ namespace :db_status do
     desc "See Amostras db Status" 
     task count_answears: :environment do
       if Answear.all.limit(5).empty?
-        puts "0 Answears on Database".yellow
+        puts "0 Answears on Database"
       else  
         puts Answear.all.limit(20000).count.to_s + " Answears on Database" 
       end
