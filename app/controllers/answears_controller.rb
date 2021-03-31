@@ -8,9 +8,9 @@ class AnswearsController < ApplicationController
   end
 
   def answeared_index # Get all answered questions
-    _questions = Question.by_user(current_user.id)
-    unless _questions.empty?
-      _questions.each do |question|
+    @questions = Question.by_user(current_user.id)
+    unless @questions.empty?
+      @questions.each do |question|
         @answears = Answear.by_question_id(question.id)
       end
     end

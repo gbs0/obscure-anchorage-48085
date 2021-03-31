@@ -1,29 +1,32 @@
 <div class="row">
   <div class="col-sm-6">
-    <h1>Answears</h1>
+    <h1>Answears in your Topics:</h1>
   </div>
-
-  <div class="col-sm-6 text-right">
-  <div class="text-muted text-right">
-    <span>Total questions Answeared: <%= QuestionsHelper::count(@answears) %></span>
+  <% if @question.present? %>
+    <div class="col-sm-6 text-right">
+        <div class="text-muted text-right">
+            <span>Total questions Answeared by others: <%= QuestionsHelper::count(@answears) %></span>
+        </div>
+        <%#= link_to new_answear_path, class: 'btn btn-primary' do %>
+        <!-- Add New Answear -->
+        <%# end %>
   </div>
-  <%#= link_to new_answear_path, class: 'btn btn-primary' do %>
-    <!-- Add New Answear -->
-  <%# end %>
-  </div>
+  <% else %>
+    <div class="col-sm-6 text-right">
+        <div class="text-muted text-right">
+            <span>Answeared by others: 0</span>
+        </div>
+    </div>
+  <% end %>
 </div>
 
 <div class="table-responsive">
-  <% if @answears.empty? %>  
-    <div class="container text-center mt-5">
-      <h4>Anyone answeared you yet 🤓</h4>
-    </div>
-  <% else %>
-  <table class="table table-striped table-bordered table-hover">
+  <% if @answears.present? %>  
+    <table class="table table-striped table-bordered table-hover">
       <thead>
         <tr>
-          <th>Question</th>
-          <th>Your Answears</th>
+          <th>My Questions</th>
+          <th>Others Answears</th>
           <th>Lat</th>
           <th>Lng</th>
           <th>View</th>
@@ -48,5 +51,9 @@
         <% end %>
       </tbody>
     </table>
+  <% else %>
+    <div class="container text-center mt-5">
+      <h4>Anyone answeared you yet 🤓</h4>
+    </div>
   <% end %>
 </div>
