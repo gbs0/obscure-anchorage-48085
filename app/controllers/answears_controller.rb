@@ -1,6 +1,6 @@
 class AnswearsController < ApplicationController
   before_action :set_answear, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, only: %i[ new ]
+  before_action :authenticate_user!, only: %i[ new, index, show ]
 
   # GET /answears or /answears.json
   def index

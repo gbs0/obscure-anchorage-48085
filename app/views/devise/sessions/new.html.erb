@@ -12,11 +12,13 @@
       </div>
 
       <% if devise_mapping.rememberable? -%>
-        <div class="form-check">
-          <label class="form-check-label">
-            <%= f.check_box :remember_me, class: "form-check-input" %>
-            Remember me
-          </label>
+        <div class="mt-2 mb-3">
+          <div class="form-check">
+            <label class="form-check-label">
+              <%= f.check_box :remember_me, class: "form-check-input" %>
+              Remember me
+            </label>
+          </div>
         </div>
       <% end -%>
 
@@ -25,7 +27,7 @@
       </div>
     <% end %>
 
-    <div class="text-center">
+    <div class="text-center mt-2 mb-3">
       <%= render "devise/shared/links" %>
     </div>
   </div>
