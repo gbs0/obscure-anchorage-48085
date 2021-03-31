@@ -23,6 +23,19 @@
 </div>
 
 <dl class="dl-horizontal mt-3 bordered">
+  <div class="bd-callout-question bd-callout-bubble">
+    <div class="d-flex flex-column justify-content-between" style="min-height: 10rem;">
+      <div class="post-title">
+        <br/>
+        <%= QuestionsHelper::title(@question.id) %>
+      </div>
+      <div class="text-right">
+          <small>Posted <%= QuestionsHelper::timestamp(@question.id) %> ago</small>
+          <small>Topic <%= QuestionsHelper::timestamp(@question.id) %> ago</small>
+      </div>
+    </div>
+  </div>
+
   <dt>Title:</dt>
   <dd><%= @question.title %></dd>
 

@@ -12,3 +12,17 @@
 .bd-callout-warning {
     border-left-color: #f0ad4e;
 }
+
+.bd-callout-question {
+    padding: 1.25rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid #eee;
+    border-left-width: .25rem;
+    border-radius: .25rem;
+    min-height: 12rem;
+}
+
+.bd-callout-bubble {
+    border-left-color: $green;
+}
