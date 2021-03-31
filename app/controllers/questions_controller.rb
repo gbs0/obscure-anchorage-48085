@@ -1,10 +1,10 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: %i[ show edit update destroy ]
-  before_action :set_user, only: %i[create]
+  before_action :set_user, only: %i[ index create]
 
   # GET /questions or /questions.json
   def index
-    @questions = Question.all
+    @questions = Question.where(user_id: @user.id)
   end
 
   # GET /questions/1 or /questions/1.json
@@ -55,10 +55,11 @@ class QuestionsController < ApplicationController
   def destroy
     @question.destroy
     respond_to do |format|
-      format.html { redirect_to questions_url, notice: "Question was successfully destroyed." }
+      format.html { redirect_to quizzes_path, notice: "Question was successfully destroyed." }
       format.json { head :no_content }
     end
   end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.

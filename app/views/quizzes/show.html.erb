@@ -15,7 +15,7 @@
   </div>
 </div>
 
-<dl class="dl-horizontal col-sm-12 col-md-4 mb-3">
+<dl class="dl-horizontal col-sm-12 col-md-6 mb-3">
   <ul class="list-group">
     <li class="list-group-item"><strong>Title:</strong> <%= @quiz.title %></li>
     <li class="list-group-item"><strong>Topic:</strong> <%= @quiz.topic %></li>
@@ -45,8 +45,8 @@
             <% end %>
           </div>
           <div class="card-footer">
-            <small class="text-muted">Created <%= Timezone.date_threshold(question.created_at) %> ago | </small>
-            <small class="text-muted">Last Update: <%= Timezone.date_threshold(question.updated_at) %> ago</small>
+            <small class="text-muted">Created at: <%= Timezone.datetime(question.created_at) %> | </small>
+            <small class="text-muted">Last update: <%= Timezone.date_threshold(question.updated_at) %> ago</small>
           </div>
         </div>
       <% end %>

@@ -9,7 +9,11 @@ module QuestionsHelper
     end
 
     def self.timestamp(id)
-        timestamp = Question.by_id(id).created_at
+        timestamp = Question.by_id(id).created_at.to_s
         Timezone.date_threshold(timestamp)
+    end
+
+    def self.count(relation)
+        relation.count
     end
 end
