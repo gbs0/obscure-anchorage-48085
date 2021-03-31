@@ -1,7 +1,7 @@
 class AnswearsController < ApplicationController
   before_action :set_answear, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, only: %i[ new, index, show ]
-
+  before_action :authenticate_user!, only: %i[ new index show ]
+  before_action :set_user,  only: %i[ new]
   # GET /answears or /answears.json
   def index
     @answears = Answear.by_user(current_user.id)
@@ -32,11 +32,12 @@ class AnswearsController < ApplicationController
   # POST /answears or /answears.json
   def create
     @answear = Answear.new
+    @answear.question_id = breadcrumb_params[:question_id]
     @answear.user_id = current_user.id
     @answear.description = answear_params[:description]
     @answear.lat = breadcrumb_params[:lat]
     @answear.lng = breadcrumb_params[:lng]
-    @answear.question_id = breadcrumb_params[:question_id]
+    
 
     respond_to do |format|
       if @answear.save
@@ -84,5 +85,9 @@ class AnswearsController < ApplicationController
 
     def breadcrumb_params
       params.permit(:question_id, :lat, :lng)
+    end
+
+    def set_user
+      @user = current_user
     end
 end
