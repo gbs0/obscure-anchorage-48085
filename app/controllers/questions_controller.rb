@@ -1,7 +1,8 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: %i[ show edit update destroy ]
   before_action :set_user, only: %i[ index create]
-
+  before_action :set_answears, only: %i[ show ]
+  before_action :masquerade_user!, only: %i[ new ]
   # GET /questions or /questions.json
   def index
     @questions = Question.where(user_id: @user.id)
@@ -59,10 +60,9 @@ class QuestionsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_question
       @question = Question.find(params[:id])
     end
@@ -83,4 +83,9 @@ class QuestionsController < ApplicationController
     def set_user
       @user = current_user
     end
+
+    def set_answears
+      @answears = Answear.by_quiz_id(@question.id)
+    end
+    
 end

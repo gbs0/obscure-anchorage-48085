@@ -25,9 +25,9 @@ User.create(id: 2,
     )
 
 puts "Creating quizzes..."
-    5.times do
+    1.times do
         Quiz.create(
-            title: "#{Faker::Book.title}",
+            title: "This is my first Quiz!",
             user_id: User.last.id,
             topic: Faker::Educator.subject
         )
@@ -37,13 +37,11 @@ puts "✅ Done Creating Quizzes!"
 puts "Creating questions..."
     i = 1
     while (i < 5)
-        5.times do
-            Question.create(
-                title: "#{Faker::TvShows::Simpsons.quote} ?",
-                quiz_id: Quiz.find(i).id,
-                user_id: User.last.id    
-            )
-        end
+        Question.create(
+            title: "#{Faker::TvShows::Simpsons.quote} ?",
+            quiz_id: Quiz.last.id,
+            user_id: User.last.id    
+        )
         i += 1
     end
 puts "✅ Done Creating Questions"
