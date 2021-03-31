@@ -85,7 +85,7 @@ class QuestionsController < ApplicationController
     end
 
     def set_answears
-      @answears = Answear.by_quiz_id(@question.id)
+      @answears = Answear.by_question_id(@question.id)
     end
     
 end
