@@ -22,7 +22,11 @@ class AnswearsController < ApplicationController
 
   # POST /answears or /answears.json
   def create
-    @answear = Answear.new(answear_params)
+    @answear = Answear.new
+    @answear.description = answear_params[:description]
+    @answear.lat = breadcrumb_params[:lat]
+    @answear.lng = breadcrumb_params[:lng]
+    @answear.question_id = breadcrumb_params[:question_id]
 
     respond_to do |format|
       if @answear.save
@@ -65,6 +69,10 @@ class AnswearsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def answear_params
-      params.require(:answear).permit(:description, :question_id, :lat, :lng)
+      params.permit(:description)
+    end
+
+    def breadcrumb_params
+      params.permit(:question_id, :lat, :lng)
     end
 end

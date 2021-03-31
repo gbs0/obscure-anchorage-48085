@@ -1,7 +1,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  resources :answears, except: [ :new ]
+  resources :answears, except: [ :new, :edit, :update ]
   resources :questions do
     resources :answears, only: [ :new, :create ]
   end

@@ -26,7 +26,7 @@
   </div>
 </div>
 
-<dl class="dl-horizontal m-4 bordered col-md-10">
+<dl class="dl-horizontal m-4 mb-5 bordered col-md-10">
   <div class="bd-callout-question bd-callout-bubble">
     <div class="d-flex flex-column justify-content-between" style="min-height: 10rem;">
       <div class="post-title">
@@ -38,12 +38,28 @@
       </div>
     </div>
   </div>
-
-  <% if @answears.empty? %>
-
-  <% else %>
-    <div class="container text-center mt-5">
-      <h4>Nobody answear this question yet 🤓</h4>
-    </div>
-  <% end %>
 </dl>
+
+<% unless @answears.empty? %>
+  
+  <% @answears.each do |answear| %>
+  <div class="container col-md-10 mb-3">
+    <div class="bd-answear bd-answear-warning">
+      <div class="d-flex flex-column justify-content-between" style="min-height: 10rem;">
+        <div class="post-title">
+          <br/>
+          <%= answear.description %>
+        </div>
+        <div class="text-right">
+            <small>Answered <%= AnswearsHelper::timestamp(answear.id) %> ago by <%= AnswearsHelper::author(answear.user) %></small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+<% else %>
+  <div class="container text-center mt-5">
+    <h4>Nobody answear this question yet 🤓</h4>
+  </div>
+<% end %>
+
