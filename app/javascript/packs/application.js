@@ -13,8 +13,12 @@ window.Rails = Rails
 
 import 'bootstrap'
 import 'data-confirm-modal'
+import { browserNavigator } from '../components/coordinates'
 
 $(document).on("turbolinks:load", () => {
   $('[data-toggle="tooltip"]').tooltip()
   $('[data-toggle="popover"]').popover()
+  browserNavigator();
 })
+
+
