@@ -52,6 +52,7 @@ puts "Creating Answears..."
         Answear.create(
             description: Faker::ChuckNorris.fact,
             question_id: question.id,
+            user_id: User.first.id,
             lat: Faker::Address.latitude,
             lng: Faker::Address.longitude
         )

@@ -5,7 +5,7 @@ module AnswearsHelper
     end
 
     def self.author(id)
-
+        UsersHelper::user_name(id)
     end
 
     def self.coordinates(lat, lng)

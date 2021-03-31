@@ -55,11 +55,13 @@ ActiveRecord::Schema.define(version: 2021_03_30_180504) do
   create_table "answears", force: :cascade do |t|
     t.string "description"
     t.bigint "question_id", null: false
+    t.bigint "user_id", null: false
     t.decimal "lat", precision: 10, scale: 6
     t.decimal "lng", precision: 10, scale: 6
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["question_id"], name: "index_answears_on_question_id"
+    t.index ["user_id"], name: "index_answears_on_user_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -137,6 +139,7 @@ ActiveRecord::Schema.define(version: 2021_03_30_180504) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "answears", "questions"
+  add_foreign_key "answears", "users"
   add_foreign_key "questions", "quizzes"
   add_foreign_key "questions", "users"
   add_foreign_key "quizzes", "users"

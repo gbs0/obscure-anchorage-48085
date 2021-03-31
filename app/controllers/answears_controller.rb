@@ -4,7 +4,7 @@ class AnswearsController < ApplicationController
 
   # GET /answears or /answears.json
   def index
-    @answears = Answear.all
+    @answears = Answear.by_user(current_user.id)
   end
 
   # GET /answears/1 or /answears/1.json
