@@ -8,4 +8,6 @@ class User < ApplicationRecord
 
   has_many :notifications, as: :recipient
   has_many :services
+
+  scope :by_id, -> (id) { find_by("id = ?", id) }
 end

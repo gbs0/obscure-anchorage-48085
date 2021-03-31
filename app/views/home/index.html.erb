@@ -1,2 +1,35 @@
-<h1>Welcome to Jumpstart!</h1>
-<p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+<div class="page-title mb-5 mt-2">
+    <h1>Welcome to HackTools Quiz Challenge!</h1>
+    <p class="lead">This project is made by Gabriel Schiavo,<br> feel free to use this quizzes and answears platform as your needs.</p>
+</div>
+
+<div class="content">
+    <% if @questions.present? %>
+        <% @questions.each do |question| %>
+            <div class="card bg-light mb-3">
+                <div class="card-header">
+                    <label>Quiz title: <strong><%= QuizzesHelper::quiz_name(question.quiz_id) %></strong> | Topic: <strong><%= QuizzesHelper::quiz_topic(question.quiz_id) %></strong></label>
+                </div>
+                <div class="card-body bg-secondary text-light">
+                    <blockquote class="blockquote mb-0">
+                        <p><%= question.title %></p>
+                    </blockquote>
+                    <div>
+                        <%if user_masquerade? %>
+                            <% unless current_user.id.equal?(question.user_id)  %>
+                                <a href="#" class="btn btn-md btn-success">Answear It!</a>
+                            <% end %>
+                        <% end %>
+                        <a href="#" class="btn btn-md btn-warning">See Answears</a>
+                    </div>
+                    <div class="p-3 text-right">
+                        <footer class="blockquote-footer text-white flex-end">Asked by: <cite title="Source Title"><%=  UsersHelper::user_name(question.user_id) %></cite></footer>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Asked <%= Timezone.date_threshold(question.created_at) %> ago</small>
+                </div>
+            </div>
+        <% end %>
+    <% end %>
+</div>
