@@ -1,18 +1,19 @@
-
-
-
 <div class="row">
   <div class="col-sm-6">
     <h1>Quizzes</h1>
   </div>
 
   <div class="col-sm-6 text-right">
-  <%= link_to new_quiz_path, class: 'btn btn-primary' do %>
-    Add New Quiz
-  <% end %>
+    <%= link_to new_quiz_path, class: 'btn btn-primary' do %>
+      Add New Quiz
+    <% end %>
+    <div class="text-muted text-right">
+      <span>Total quizzes count: <%= QuestionsHelper::count(@quizzes) %></span>
+    </div>
   </div>
 </div>
 
+<% if @quizzes.present? %>
 <div class="table-responsive">
   <table class="table table-striped table-bordered table-hover">
     <thead>
@@ -43,3 +44,8 @@
     </tbody>
   </table>
 </div>
+<% else %>
+  <div class="container text-center mt-5">
+    <h4>You doesn't have any quizzes yet 🤓</h4>
+  </div>
+<% end %>

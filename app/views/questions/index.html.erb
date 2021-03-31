@@ -4,9 +4,6 @@
   </div>
   
   <div class="col-sm-6 text-right mb-2">
-    <%= link_to new_question_path, class: 'btn btn-primary mb-3' do %>
-      Add New Question
-    <% end %>
     <div class="text-muted text-right">
       <span>Total questions count: <%= QuestionsHelper::count(@questions) %></span>
     </div>
@@ -47,7 +44,7 @@
     </table>
   </div>
   <% else %>
-  <div class="text-center">
-    <h2>You didn't post any questions yet ): </h2>
-  </div>
+  <div class="container text-center mt-5">
+      <h4>Create a quizz to start asking others 🤓</h4>
+    </div>
 <% end %>

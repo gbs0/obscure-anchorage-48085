@@ -14,33 +14,39 @@
 </div>
 
 <div class="table-responsive">
+  <% if @answears.empty? %>  
+    <div class="container text-center mt-5">
+      <h4>You've not answeared anyone yet 🤓</h4>
+    </div>
+  <% else %>
   <table class="table table-striped table-bordered table-hover">
-    <thead>
-      <tr>
-        <th>Question</th>
-        <th>Your Answears</th>
-        <th>Lat</th>
-        <th>Lng</th>
-        <th>View</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% if @answears.present? %>
-        <% @answears.each do |answear| %>
-          <%= content_tag :tr, id: dom_id(answear), class: dom_class(answear) do %>
-            
+      <thead>
+        <tr>
+          <th>Question</th>
+          <th>Your Answears</th>
+          <th>Lat</th>
+          <th>Lng</th>
+          <th>View</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @answears.present? %>
+          <% @answears.each do |answear| %>
+            <%= content_tag :tr, id: dom_id(answear), class: dom_class(answear) do %>
+              
 
-                        <td><%= answear.question.title %></td>
-                        <td><%= answear.description %></td>
-                        <td><%= answear.lat %></td>
-                        <td><%= answear.lng %></td>
-            
-            
-              <td><%= link_to 'Show', answear %></td>
-            
+                          <td><%= answear.question.title %></td>
+                          <td><%= answear.description %></td>
+                          <td><%= answear.lat %></td>
+                          <td><%= answear.lng %></td>
+              
+              
+                <td><%= link_to 'Show', answear %></td>
+              
+            <% end %>
           <% end %>
         <% end %>
-      <% end %>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  <% end %>
 </div>
